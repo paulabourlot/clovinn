@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<body>
+	<div data-th-fragment="modales">
+		
+		<div id="modalOperacion" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" data-th-text="#{operacionProducto}"></h4>
+					</div>
+					<div class="modal-body padding-bottom-0">
+						<form id="operacionForm" class="form-horizontal form-valido" 
+							data-th-object="${productoForm}" data-th-method="POST"
+							data-th-action="@{/operacion}">
+							
+							<input type="hidden" id="idProductoOperacion" 
+								data-th-field="*{operacion.idProducto}" /> 
+							<input type="hidden" id="_method" name="_method" value="POST" />
+	
+							<div class="form-group row">
+								<label for="tipoOperacion" class="col-md-2 control-label"
+									data-th-text="#{operacion.tipo}"></label>
+								<div class="col-md-3">
+									<select id="productoTipo" class="form-control" required="required"
+										data-th-field="*{operacion.tipoOperacion}">
+										<option value="COMPRA">COMPRA</option>
+										<option value="VENTA">VENTA</option>
+									</select>
+								</div>
+
+								<label for="cantidad" class="col-md-2 control-label"
+									data-th-text="#{operacion.cantidad}">Cantidad</label>
+								<div class="col-md-4">
+									<input type="number" class="form-control cantidad" id="cantidadItem" 
+										required="required" placeholder="999" data-th-field="*{operacion.cantidad}"/>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+					<div class="modal-footer margin-top-0">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							data-th-text="#{general.cancelar}">Cancelar</button>
+						<button id="guardarOperacion" type="button"
+							class="btn btn-primary" data-th-text="#{general.guardar}">Guardar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>

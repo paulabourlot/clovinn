@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<div id="mensajes-validacion" data-th-fragment="mensajes-validacion">
+	<div id="mensaje-error-validador" class="mensaje-validacion" data-th-if="${#fields.hasAnyErrors()}" 
+		style="display: none;">
+		<ul>
+			<li class="mensaje-error-validacion" data-th-each="err : ${#fields.errors('*')}" 
+				data-th-text="${err}"></li>
+		</ul>
+	</div>
+	<div class="mensaje-validacion" data-th-if="*{mensajeExito} != null" style="display: none;">
+		<p id="mensajeExito" data-th-text="*{mensajeExito}"></p>
+	</div>
+	<div class="mensaje-validacion" data-th-if="*{mensajeError} != null" style="display: none;">
+		<p id="mensajeError" data-th-text="*{mensajeError}"></p>
+	</div>
+</div>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout">
+<body>
+	<div data-layout-fragment="content">
+		<section class="content">
+            <div class="page-heading">
+                <h1 data-th-text="#{producto.titulo}"></h1>
+               
+                 <ol class="breadcrumb">
+                   <li><a data-th-href="@{/}" data-th-text="#{menu.areaTrabajo}">�rea de trabajo</a></li>
+                   <li class="active" data-th-text="#{producto.tituloNav}"></li>
+                </ol>
+            </div>
+            <div class="page-body">
+            	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            		<div class="row margin-top-10">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="panel-group" id="panelFiltros">
+								<div class="panel panel-default">
+		                            <div class="panel-heading clearfix">
+		                                 <div class="btn-group pull-right botonera-header-panel">
+									        <button id="agregarProducto" type="button" class="btn btn-primary">
+												<i class="fa fa-plus"></i>
+												<span data-th-text="#{producto.agregar}"></span>
+											</button>
+									      </div>
+		                            </div>
+		                        </div>
+							</div>
+						</div>
+					</div>
+	                <div class="panel panel-default">
+	                    <div class="panel-heading" data-th-text="#{producto.titulo}"></div>
+	                    <div class="panel-body">
+							<form id="formProducto" class="form-horizontal" data-th-object="${productoForm}" data-th-method="GET">
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="formulario-medio">
+											<div data-th-include="error/mensajes-validacion :: mensajes-validacion"></div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row margin-top-10">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<table id="filasProductos"
+											class="table table-bordered">
+											<thead class="thead-default">
+												<tr>
+													<th scope="col" class="col-md-2" data-th-text="#{producto.codigo}"></th>
+													<th scope="col" class="col-md-3" data-th-text="#{producto.nombre}"></th>
+													<th scope="col" class="col-md-3" data-th-text="#{producto.categoria}"></th>
+													<th scope="col" class="col-md-2" data-th-text="#{producto.stock}"></th>
+													<th scope="col" class="col-md-2" data-th-text="#{general.accion}"></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr data-th-if="${#lists.isEmpty(productoForm.listaProductos)}">
+													<td colspan="12" data-th-text="#{general.sinRegistros}"></td>
+												</tr>
+												<tr data-th-if="${not #lists.isEmpty(productoForm.listaProductos)}"
+													data-th-each="producto : *{listaProductos}"
+													data-th-attr="data-id=${producto.id}">
+													<td scope="row" data-th-text="${producto.codigo}"></td>
+													<td scope="row" data-th-text="${producto.nombre}"></td>
+													<td scope="row" data-th-text="${producto.nombreCategoria}"></td>
+													<td scope="row" data-th-text="${producto.stock}"></td>
+													<td scope="row" class="text-center">
+														<button type="button"
+															class="btn btn-success btn-xs operacion-producto"
+															data-th-attr="id-producto=${producto.id}">
+															<span class="fa fa-archive"></span>
+														</button>
+
+														<button type="button"
+															class="btn btn-warning btn-xs editar-producto"
+															data-th-attr="id-producto=${producto.id}">
+															<span class="fa fa-pencil-alt"></span>
+														</button>
+														<button type="button"
+															class="btn btn-danger btn-xs eliminar-producto"
+															data-th-attr="id-producto=${producto.id}">
+															<span class="fa fa-times"></span>
+														</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<div id="modalEliminarProducto" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" data-th-text="#{general.atencion}"></h5>
+					</div>
+					<div class="modal-body">
+						<form id="formProductoEliminar" class="form-horizontal" data-th-object="${productoForm}" 
+							data-th-action="@{/producto}" data-th-method="DELETE">
+							<input type="hidden" id="idProductoEliminar" />
+							<p data-th-text="#{alerta.producto.baja}"></p>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal" data-th-text="#{general.no}">No</button>
+						<button id="confirmaEliminaProducto" type="button" class="btn btn-default" data-th-text="#{general.si}">S�</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div data-th-include="producto/operacion-modal :: modales"></div>
+		<script data-layout-fragment="custom-javascript" data-th-src="@{/js/custom/producto/producto-lista.js}"></script>
+	</div>
+</body>
+</html>

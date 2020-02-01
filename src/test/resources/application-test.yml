@@ -1,0 +1,22 @@
+spring:
+    datasource:
+      url: "jdbc:h2:mem:db;MODE=MySQL;INIT=RUNSCRIPT FROM 'classpath:db/migration/init_test.sql'"
+      username: sa
+      password:
+      driverClassName: org.h2.Driver
+      validation-query: SELECT 1 FROM DUAL;
+      test-on-borrow: true
+      test-on-return: false
+      test-while-idle: true
+      platform: h2
+        
+    jpa:
+        generate-ddl: false
+        show-sql: true
+        hibernate:
+            ddl-auto: none
+            dialect: org.hibernate.dialect.H2Dialect
+
+    jackson: 
+      serialization:
+        WRITE_DATES_AS_TIMESTAMPS: false

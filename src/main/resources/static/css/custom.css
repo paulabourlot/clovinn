@@ -1,0 +1,61 @@
+.slimScrollDiv { 
+	border:1px solid #eee; 
+	height: auto !important;
+	max-height: 300px !important;
+}
+
+.menu{
+	height: auto !important;
+	max-height: 300px !important;
+}
+
+.mensaje-validacion {
+	margin-left: 100px;
+}
+
+.error-validacion {
+	border-color: #a94442;
+}
+
+.icono-menu{
+	min-width: 35px;
+}
+
+.botonera-header-panel {
+	margin: 2px 2px 0 2px;
+}
+
+.boton-inicio {
+	width: 100%	
+}
+
+.panel-heading{
+	min-height: 35px;
+}
+
+.btn-xs i, .btn-xs span{
+	min-height: 13px;
+	min-width: 13px;
+}
+
+.totales {
+    margin: 0;
+	font-size: 28px;
+	font-weight: 600;
+	display: inline-block;
+	color: #666;
+}
+
+.margin-r-5{
+	margin-right: 5px;
+}
+
+.row-disabled {
+	opacity: 0.7;
+}
+
+.margin-t-10{
+	margin-top: 10px;
+}
+	    
+}

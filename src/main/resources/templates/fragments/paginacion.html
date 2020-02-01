@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<div class="container-fluid" data-th-fragment="paginacion">		
+			<div data-th-if="${objetoPageable} != null">
+				<ul class="pager">
+					<li class="previous pagination-control previousPage" 
+						data-th-classappend="${objetoPageable.hasPrevious() == false} ? 'disabled' ">
+						<a href="#"><span aria-hidden="true">&laquo; Anterior</span></a>
+					</li>
+					<li data-th-text="#{general.paginacion.titulo(${objetoPageable.number} + 1, ${objetoPageable.totalPages}, ${objetoPageable.numberOfElements})}"></li>
+					<li class="next pagination-control nextPage" data-th-classappend="${objetoPageable.hasNext() == false} ? 'disabled' ">
+						<a href="#"><span aria-hidden="true">Siguiente  &raquo;</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
+

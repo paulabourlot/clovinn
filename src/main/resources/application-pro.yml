@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:clovinn
+    username: clovinn
+    password: clovinn123
+    driverClassName: org.h2.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+      
+flyway: 
+    enabled: true
+    location: db/migration/
+    
+server: 
+    port: 8080
+    context-path: /
+    

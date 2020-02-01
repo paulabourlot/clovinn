@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout">
+<body>
+	<div data-layout-fragment="content">
+		<section class="content">
+            <div class="page-heading">
+                <h1 data-th-text="#{producto.titulo}"></h1>
+               
+                 <ol class="breadcrumb">
+                   <li><a data-th-href="@{/}" data-th-text="#{menu.areaTrabajo}"></a></li>
+                   <li class="active" data-th-text="#{producto.tituloNav}"></li>
+               	 </ol>
+            </div>
+            <div class="page-body">
+            	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<form id="formProducto" class="form-horizontal formulario-medio" data-th-action="@{/producto}"
+						data-th-object="${productoForm}" data-th-method="POST">	                <div class="panel panel-default">
+		                 	<div data-th-include="error/mensajes-validacion :: mensajes-validacion"></div>
+							<input type="hidden" id="idProducto" data-th-field="*{producto.id}" />
+							<input type="hidden" id="_method" name="_method" value="POST" />
+								
+		                    <div class="panel-heading"
+		                    	data-th-text="*{producto.id} != null ? #{producto.titulo.edicion} : #{producto.titulo.alta}"></div>
+		                    <div class="panel-body">
+											
+								<div class="form-group row">
+									<label for="codigoProducto" class="col-md-2 control-label"
+										data-th-text="#{producto.codigo}"></label>
+									<div class="col-md-2">
+										<input type="text" class="form-control" id="codigoProducto" 
+											data-th-errorclass="error-validacion" data-th-field="*{producto.codigo}" 
+											placeholder="PA0001"/>
+									</div>
+									
+									<label for="nombreProducto" class="col-md-2 control-label"
+										data-th-text="#{producto.nombre}"></label>
+									<div class="col-md-6">
+										<input type="text" class="form-control" id="nombreProducto" 
+											data-th-errorclass="error-validacion" data-th-field="*{producto.nombre}" 
+											placeholder="REMERA COMICS"/>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label for="categoriaProducto" class="col-md-2 control-label"
+										data-th-text="#{producto.categoria}"></label>
+									<div class="col-md-6">
+										<select id="categoriaProducto" class="form-control" data-th-errorclass="error-validacion"
+											data-th-field="*{producto.idCategoria}">
+											<option data-th-each="categoria : *{listaCategorias}"
+												data-th-value="${categoria.id}"
+												data-th-text="${categoria.nombre}"></option>
+										</select>
+									</div>
+									
+									<label for="stockProducto" class="col-md-2 control-label"
+										data-th-text="#{producto.stock}"></label>
+									<div class="col-md-2">
+										<input type="text" class="form-control" id="stockProducto" 
+											data-th-errorclass="error-validacion" data-th-field="*{producto.stock}" 
+											placeholder="999"/>
+									</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<div class="text-right">
+									<button id="volverProducto" class="btn btn-default"
+										type="button" data-th-text="#{general.volver}">Volver</button>
+									<button class="btn btn-primary" type="button"
+										data-th-text="#{general.guardar}" id="guardarProducto">Guardar</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+				
+		<script data-layout-fragment="custom-javascript" data-th-src="@{/js/custom/producto/producto.js}"></script>
+	</div>
+</body>
+</html>

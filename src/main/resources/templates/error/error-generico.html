@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html data-layout-decorator="layout">
+<body>
+	<div data-layout-fragment="content">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<strong class="text-center"
+						data-th-text="#{general.nombreAplicacion}"></strong>
+				</div>
+
+				<div class="modal-body">
+					<div class="form-group alert alert-danger">
+						<strong data-th-text="#{error.500.mensaje}"></strong>
+					</div>
+					
+					<div class="form-group">
+						<a data-th-href="@{/}" class="btn btn-primary btn-lg btn-block"
+							role="button" data-th-text="#{general.irPaginaPrincipal}"></a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
